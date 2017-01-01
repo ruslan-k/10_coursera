@@ -5,8 +5,9 @@ from random import sample
 import requests
 from bs4 import BeautifulSoup
 from lxml import etree
-from openpyxl import styles, Workbook
+from openpyxl import Workbook
 
+NUM_OF_COURSES = 20
 
 def get_courses_list(number_of_links):
     courses_xml = 'https://www.coursera.org/sitemap~www~courses.xml'
@@ -86,8 +87,7 @@ def output_courses_info_to_xlsx(filepath, courses_info):
 
 
 if __name__ == '__main__':
-    number_of_links = 1
-    courses_links = get_courses_list(number_of_links)
+    courses_links = get_courses_list(NUM_OF_COURSES)
     courses_info = get_courses_info(courses_links)
     filepath = sys.argv[1]
     output_courses_info_to_xlsx(filepath, courses_info)
